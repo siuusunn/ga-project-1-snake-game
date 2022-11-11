@@ -26,14 +26,6 @@ function initiation() {
 
     let applePosition = 0;
 
-    function spawnApple() {
-      removeApple(applePosition);
-      applePosition = getRandomPosition();
-      addApple(applePosition);
-      console.log(applePosition);
-    }
-    spawnApple();
-
     function addApple(position) {
       cells[position].classList.add("apple");
     }
@@ -46,80 +38,75 @@ function initiation() {
       return Math.floor(Math.random() * gridCellCount);
     }
 
+    function spawnApple() {
+      removeApple(applePosition);
+      applePosition = getRandomPosition();
+      addApple(applePosition);
+      console.log(applePosition);
+    }
+    spawnApple();
+
     // ! SNAKE FUNCTIONS
 
-    // ? Spawn snake
+    // ? SPAWN SNAKE
 
-    let snakeArray = [20, 21, 22];
-    let snakeHead = 1;
-    let previousSnakeHead = 0;
-    let snakeBody = 0;
+    let snake = [3, 2, 1, 0];
 
-    function addSnake() {
-      cells[snakeHead].classList.add("snake");
-      cells[snakeBody].classList.add("snake");
-      // const snake = snakeArray.forEach((cell) =>
-      //   cells[cell].classList.add("snake")
-      // );
+    function renderSnake() {
+      snake.forEach((cell) => cells[cell].classList.add("snake"));
     }
 
-    addSnake();
+    renderSnake();
 
     function removeSnake() {
-      cells[snakeHead].classList.remove("snake");
-      cells[snakeBody].classList.remove("snake");
-      // snakeArray.forEach((cell) => cells[cell].classList.remove("snake"));
-    }
-    // ? Move snake
-
-    function moveRight() {
-      snakeHead++;
-      console.log(snakeHead);
-      previousSnakeHead = snakeHead - 1;
-      snakeBody = previousSnakeHead;
-      // const testRight = snakeArray.map((cell) => (cell += 1));
+      snake.forEach((cell) => cells[cell].classList.remove("snake"));
     }
 
-    function moveLeft() {
-      snakeHead--;
-      console.log(snakeHead);
-      previousSnakeHead = snakeHead + 1;
-      snakeBody = previousSnakeHead;
+    // ? MOVING THE SNAKE
+
+    let directionOfTravel;
+
+    function getDirectionOfTravel(event) {
+      if (event.key === "ArrowRight") {
+        directionOfTravel = "right";
+        console.log(directionOfTravel);
+      } else if (event.key === "ArrowDown") {
+        directionOfTravel = "down";
+        console.log(directionOfTravel);
+      } else if (event.key === "ArrowLeft") {
+        directionOfTravel = "left";
+        console.log(directionOfTravel);
+      } else if (event.key === "ArrowUp") {
+        directionOfTravel = "up";
+        console.log(directionOfTravel);
+      }
     }
 
-    function moveUp() {
-      snakeHead -= 10;
-      console.log(snakeHead);
-      previousSnakeHead = snakeHead + 10;
-      snakeBody = previousSnakeHead;
-    }
-
-    function moveDown() {
-      snakeHead += 10;
-      console.log(snakeHead);
-      previousSnakeHead = snakeHead - 10;
-      snakeBody = previousSnakeHead;
-    }
-
-    // ? Actual game mechanics
+    window.addEventListener("keydown", getDirectionOfTravel);
 
     function moveSnake(event) {
-      removeSnake(snakeHead);
-      const x = snakeHead % width;
-      const y = Math.floor(snakeHead / width);
+      removeSnake();
+      const x = snake[0] % width;
+      const y = Math.floor(snake[0] / width);
       if (event.key === "ArrowRight" && x < width - 1) {
-        moveRight();
-      } else if (event.key === "ArrowUp" && y > 0) {
-        moveUp();
-      } else if (event.key === "ArrowLeft" && x > 0) {
-        moveLeft();
+        snake.pop();
+        snake.unshift(snake[0] + 1);
       } else if (event.key === "ArrowDown" && y < width - 1) {
-        moveDown();
+        snake.pop();
+        snake.unshift(snake[0] + 10);
+      } else if (event.key === "ArrowLeft" && x > 0) {
+        snake.pop();
+        snake.unshift(snake[0] - 1);
+      } else if (event.key === "ArrowUp" && y > 0) {
+        snake.pop();
+        snake.unshift(snake[0] - 10);
       }
-      addSnake(snakeHead);
+      renderSnake();
     }
 
     window.addEventListener("keydown", moveSnake);
+
+    // ? EATING THE APPLE
 
     // ? Score function //////////////////////////////////////
 
@@ -135,6 +122,8 @@ function initiation() {
   // Start game functions ////////////////////////////
 
   startButton.addEventListener("click", startGame);
+
+  // ! END GAME FUNCTIONS
 }
 
 window.addEventListener("DOMContentLoaded", initiation);

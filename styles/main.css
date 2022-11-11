@@ -19,10 +19,10 @@
   width: 20px;
 }
 
-.grid div.apple {
+.apple {
   background-color: red;
 }
 
-.grid div.snake {
+.snake {
   background-color: black;
 }
