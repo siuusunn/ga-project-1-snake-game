@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .screen {
   display: flex;
   flex-direction: column;
