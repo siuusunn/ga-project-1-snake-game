@@ -4,6 +4,7 @@ function initiation() {
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
   const gameOverText = document.querySelector(".game-over");
+  const playAgainButton = document.querySelector(".play-again-button");
 
   // ! Grid functions
 
@@ -103,10 +104,14 @@ function initiation() {
     snake.unshift(snake[0] + 10);
   }
 
+  let snakeSpeed = 500;
+  let timer;
+
   function moveSnake() {
-    setInterval(() => {
+    timer = setInterval(() => {
       const x = snake[0] % width;
       const y = Math.floor(snake[0] / width);
+
       eatsApple();
       checkForCollision();
 
@@ -127,7 +132,7 @@ function initiation() {
         moveUp();
         renderSnake();
       }
-    }, 500);
+    }, snakeSpeed);
   }
 
   // ? CONTROLLING THE SNAKE
@@ -163,6 +168,7 @@ function initiation() {
       scoreUp();
       snake.push("10");
       renderSnake();
+      snakeSpeed = snakeSpeed - 100;
     }
   }
 
@@ -196,6 +202,8 @@ function initiation() {
     score.innerHTML = currentScore;
   }
 
+  // ! SPEED UP FUNCTIONS
+
   // ! START GAME FUNCTIONS
   function startGame() {
     gameOverText.innerHTML = "";
@@ -207,9 +215,9 @@ function initiation() {
   // ! END GAME FUNCTIONS
 
   function gameOver() {
-    removeSnake();
-    removeApple(applePosition);
     gameOverText.innerHTML = "Game over";
+    startButton.disabled = false;
+    clearInterval(timer);
   }
 
   // ! PLAY AGAIN FUNCTIONS
