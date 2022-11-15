@@ -3,7 +3,10 @@ function initiation() {
   const playButton = document.querySelector(".play-button");
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
-  const gameOverText = document.querySelector(".game-over");
+  const highScoreTable = document.querySelector(".high-score-table");
+  const highScoreLi1 = document.querySelector("#high-score-1");
+  const highScoreLi2 = document.querySelector("#high-score-2");
+  const highScoreLi3 = document.querySelector("#high-score-3");
 
   // VARIABLES
   const width = 10;
@@ -18,6 +21,7 @@ function initiation() {
   let timer;
 
   let currentScore = 0;
+  const highScores = [0, 0, 0];
 
   const gG = [
     20, 21, 22, 23, 26, 27, 28, 29, 30, 36, 40, 46, 50, 52, 53, 56, 58, 59, 60,
@@ -202,7 +206,6 @@ function initiation() {
     currentScore = 0;
     score.innerHTML = currentScore;
     renderSnake();
-    gameOverText.innerHTML = "";
     playButton.disabled = true;
     spawnApple();
     moveSnake();
@@ -213,10 +216,10 @@ function initiation() {
   function gameOver() {
     removeSnake();
     removeApple(applePosition);
-    gameOverText.innerHTML = "Game over";
     playButton.disabled = false;
     clearInterval(timer);
     displayGg();
+    checkHighScore();
   }
 
   function displayGg() {
@@ -227,17 +230,23 @@ function initiation() {
     gG.forEach((cell) => cells[cell].classList.remove("snake"));
   }
 
-  // // ! PLAY AGAIN FUNCTIONS
-
-  // function restartGame() {
-  //   window.location.reload();
-  // }
+  function checkHighScore() {
+    if (currentScore > highScores[0]) {
+      highScores[0] = currentScore;
+      highScoreLi1.textContent = currentScore;
+    } else if (currentScore < highScores[0] && currentScore > highScores[1]) {
+      highScores[1] = currentScore;
+      highScoreLi2.textContent = currentScore;
+    } else if (currentScore < highScores[1] && currentScore > highScores[2]) {
+      highScores[2] = currentScore;
+      highScoreLi3.textContent = currentScore;
+    }
+  }
 
   // ! SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
   playButton.addEventListener("click", startGame);
-  // playAgainButton.addEventListener("click", restartGame);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);

@@ -54,3 +54,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.high-score-table {
+  padding: 0;
+}
