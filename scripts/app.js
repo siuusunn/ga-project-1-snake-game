@@ -1,5 +1,6 @@
 function initiation() {
   // GETTERS
+  const gameOverText = document.querySelector(".game-over-text");
   const playButton = document.querySelector(".play-button");
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
@@ -26,10 +27,10 @@ function initiation() {
   let currentScore = 0;
   const highScores = [0, 0, 0];
 
-  const gG = [
-    20, 21, 22, 23, 26, 27, 28, 29, 30, 36, 40, 46, 50, 52, 53, 56, 58, 59, 60,
-    63, 66, 69, 70, 71, 72, 73, 76, 77, 78, 79,
-  ];
+  // const gG = [
+  //   20, 21, 22, 23, 26, 27, 28, 29, 30, 36, 40, 46, 50, 52, 53, 56, 58, 59, 60,
+  //   63, 66, 69, 70, 71, 72, 73, 76, 77, 78, 79,
+  // ];
 
   // GRID FUNCTIONS
 
@@ -216,12 +217,11 @@ function initiation() {
 
   // START GAME FUNCTIONS
   function startGame() {
-    removeGg();
+    removeGameOverText();
     removeSnake();
     snake = [43, 42, 41, 40];
     clearInterval(timer);
     directionOfTravel = "right";
-    // snakeSpeed = 500;
     currentScore = 0;
     score.innerHTML = currentScore;
     renderSnake();
@@ -233,20 +233,20 @@ function initiation() {
   // END GAME FUNCTIONS
 
   function gameOver() {
-    removeSnake();
-    removeApple(applePosition);
+    // removeSnake();
+    // removeApple(applePosition);
     playButton.disabled = false;
     clearInterval(timer);
-    displayGg();
+    displayGameOverText();
     checkHighScore();
   }
 
-  function displayGg() {
-    gG.forEach((cell) => cells[cell].classList.add("snake"));
+  function displayGameOverText() {
+    gameOverText.textContent = "GAME OVER";
   }
 
-  function removeGg() {
-    gG.forEach((cell) => cells[cell].classList.remove("snake"));
+  function removeGameOverText() {
+    gameOverText.textContent = "";
   }
 
   // CHECK HIGH SCORE
