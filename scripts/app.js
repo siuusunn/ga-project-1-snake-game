@@ -27,7 +27,7 @@ function initiation() {
   // ! APPLE FUNCTIONS
 
   let applePosition = 0;
-  let snake = [5, 4, 3, 2, 1, 0];
+  const snake = [3, 2, 1, 0];
   let directionOfTravel = "right";
 
   function addApple(position) {
@@ -80,6 +80,7 @@ function initiation() {
       case 38:
         directionOfTravel = "up";
     }
+    return directionOfTravel;
   }
 
   // ? MOVING THE SNAKE
@@ -135,31 +136,6 @@ function initiation() {
     }, snakeSpeed);
   }
 
-  // ? CONTROLLING THE SNAKE
-
-  function controlSnake(event) {
-    const x = snake[0] % width;
-    const y = Math.floor(snake[0] / width);
-    eatsApple();
-    if (event.keyCode === 39 && x < width - 1) {
-      removeSnake();
-      moveRight();
-      renderSnake();
-    } else if (event.keyCode === 40 && y < width - 1) {
-      removeSnake();
-      moveDown();
-      renderSnake();
-    } else if (event.keyCode === 37 && x > 0) {
-      removeSnake();
-      moveLeft();
-      renderSnake();
-    } else if (event.keyCode === 38 && y > 0) {
-      removeSnake();
-      moveUp();
-      renderSnake();
-    }
-  }
-
   // ? EATING THE APPLE
 
   function eatsApple() {
@@ -206,6 +182,7 @@ function initiation() {
 
   // ! START GAME FUNCTIONS
   function startGame() {
+    renderSnake();
     gameOverText.innerHTML = "";
     startButton.disabled = true;
     spawnApple();
@@ -224,7 +201,6 @@ function initiation() {
 
   // ! SETTERS
 
-  window.addEventListener("keydown", controlSnake);
   window.addEventListener("keydown", getDirectionOfTravel);
   startButton.addEventListener("click", startGame);
 }
