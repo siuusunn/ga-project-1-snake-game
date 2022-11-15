@@ -4,7 +4,6 @@ function initiation() {
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
   const gameOverText = document.querySelector(".game-over");
-  const playAgainButton = document.querySelector(".play-again-button");
 
   // VARIABLES
   const width = 10;
@@ -12,7 +11,7 @@ function initiation() {
   const cells = [];
 
   let applePosition = 0;
-  let snake = [3, 2, 1, 0];
+  let snake = [43, 42, 41, 40];
   let directionOfTravel = "right";
 
   let snakeSpeed = 500;
@@ -152,7 +151,7 @@ function initiation() {
     }
   }
 
-  // ? CHECK IF HITS THE WALL
+  // ? CHECK FOR COLLISION
 
   function checkForCollision() {
     if (
@@ -183,16 +182,20 @@ function initiation() {
   // ! SPEED UP FUNCTIONS
 
   function speedUp() {
-    snakeSpeed = snakeSpeed - 50;
+    snakeSpeed = snakeSpeed - 20;
     return snakeSpeed;
   }
 
   // ! START GAME FUNCTIONS
   function startGame() {
-    // removeSnake();
-    // snake = [3, 2, 1, 0];
+    removeSnake();
+    snake = [43, 42, 41, 40];
+    clearInterval(timer);
+    directionOfTravel = "right";
+    snakeSpeed = 500;
     renderSnake();
     gameOverText.innerHTML = "";
+    score.innerHTML = "0";
     playButton.disabled = true;
     spawnApple();
     moveSnake();
@@ -202,21 +205,21 @@ function initiation() {
 
   function gameOver() {
     gameOverText.innerHTML = "Game over";
-    playButton.disabled = true;
+    playButton.disabled = false;
     clearInterval(timer);
   }
 
-  // ! PLAY AGAIN FUNCTIONS
+  // // ! PLAY AGAIN FUNCTIONS
 
-  function restartGame() {
-    window.location.reload();
-  }
+  // function restartGame() {
+  //   window.location.reload();
+  // }
 
   // ! SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
   playButton.addEventListener("click", startGame);
-  playAgainButton.addEventListener("click", restartGame);
+  // playAgainButton.addEventListener("click", restartGame);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
