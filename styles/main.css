@@ -122,8 +122,14 @@ button {
 }
 
 .high-score-table {
-  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 15px;
+  border: dashed 5px;
+}
+
+li {
+  padding: 1px;
+  margin-top: 15px;
 }

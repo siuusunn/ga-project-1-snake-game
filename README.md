@@ -7,7 +7,8 @@ Requirements
 - The game should end when the snake hits the wall or itself
 - Snake speeds up as it eats more
 
-// Suggested enhancements
+// EXTRAS
 Responsive design
-Multi-player mode
-High score table
+Multi-player mode (NOT POSSIBLE FOR ME)
+High score table - DONE
+Choose difficulty - DONE
