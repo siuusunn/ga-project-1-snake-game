@@ -15,6 +15,9 @@ function initiation() {
   let snake = [3, 2, 1, 0];
   let directionOfTravel = "right";
 
+  let snakeSpeed = 500;
+  let timer;
+
   let currentScore = 0;
 
   // ! Grid functions
@@ -103,9 +106,6 @@ function initiation() {
     snake.unshift(snake[0] + 10);
   }
 
-  let snakeSpeed = 500;
-  let timer;
-
   function moveSnake() {
     timer = setInterval(() => {
       const x = snake[0] % width;
@@ -145,8 +145,10 @@ function initiation() {
       spawnApple();
       scoreUp();
       snake.push("10");
+      clearInterval(timer);
       renderSnake();
-      snakeSpeed = snakeSpeed - 100;
+      speedUp();
+      moveSnake();
     }
   }
 
@@ -180,6 +182,11 @@ function initiation() {
 
   // ! SPEED UP FUNCTIONS
 
+  function speedUp() {
+    snakeSpeed = snakeSpeed - 50;
+    return snakeSpeed;
+  }
+
   // ! START GAME FUNCTIONS
   function startGame() {
     renderSnake();
@@ -199,20 +206,20 @@ function initiation() {
 
   // ! PLAY AGAIN FUNCTIONS
 
-  function playAgain() {
-    removeSnake();
-    snake = [3, 2, 1, 0];
-    renderSnake();
-    gameOverText.innerHTML = "";
-    spawnApple();
-    moveSnake();
-  }
+  // function playAgain() {
+  //   removeSnake();
+  //   snake = [3, 2, 1, 0];
+  //   renderSnake();
+  //   gameOverText.innerHTML = "";
+  //   spawnApple();
+  //   moveSnake();
+  // }
 
   // ! SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
   startButton.addEventListener("click", startGame);
-  playAgainButton.addEventListener("click", playAgain);
+  // playAgainButton.addEventListener("click", playAgain);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
