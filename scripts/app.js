@@ -1,6 +1,6 @@
 function initiation() {
   // ! GETTERS
-  const startButton = document.querySelector(".start-button");
+  const playButton = document.querySelector(".play-button");
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
   const gameOverText = document.querySelector(".game-over");
@@ -189,9 +189,11 @@ function initiation() {
 
   // ! START GAME FUNCTIONS
   function startGame() {
+    // removeSnake();
+    // snake = [3, 2, 1, 0];
     renderSnake();
     gameOverText.innerHTML = "";
-    startButton.disabled = true;
+    playButton.disabled = true;
     spawnApple();
     moveSnake();
   }
@@ -200,26 +202,21 @@ function initiation() {
 
   function gameOver() {
     gameOverText.innerHTML = "Game over";
-    startButton.disabled = false;
+    playButton.disabled = true;
     clearInterval(timer);
   }
 
   // ! PLAY AGAIN FUNCTIONS
 
-  // function playAgain() {
-  //   removeSnake();
-  //   snake = [3, 2, 1, 0];
-  //   renderSnake();
-  //   gameOverText.innerHTML = "";
-  //   spawnApple();
-  //   moveSnake();
-  // }
+  function restartGame() {
+    window.location.reload();
+  }
 
   // ! SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
-  startButton.addEventListener("click", startGame);
-  // playAgainButton.addEventListener("click", playAgain);
+  playButton.addEventListener("click", startGame);
+  playAgainButton.addEventListener("click", restartGame);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
