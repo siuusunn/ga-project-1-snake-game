@@ -193,6 +193,7 @@ function initiation() {
     clearInterval(timer);
     directionOfTravel = "right";
     snakeSpeed = 500;
+    currentScore = "0";
     renderSnake();
     gameOverText.innerHTML = "";
     score.innerHTML = "0";
