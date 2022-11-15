@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nokia 3210</title>
+    <title>Nokia 8210 Snake</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <script src="./scripts/app.js" charset="utf-8"></script>
   </head>
@@ -16,8 +16,15 @@
     </div>
     <div class="texts-and-buttons">
       <p>Control the snake using arrow keys</p>
-      <p>Score: <span class="score">0</span></p>
+      <p>Choose difficulty: <span class="difficulty-text"></span></p>
+      <div class="difficulty-buttons">
+        <button id="easy-button">Noob</button>
+        <button id="medium-button">Veteran</button>
+        <button id="difficult-button">Expert</button>
+      </div>
       <button class="play-button">Play</button>
+      <p>Score: <span class="score">0</span></p>
+
       <ol class="high-score-table">
         High score table:
         <li id="high-score-1">0</li>

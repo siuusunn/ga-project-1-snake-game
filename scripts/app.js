@@ -1,11 +1,15 @@
 function initiation() {
-  // ! GETTERS
+  // GETTERS
   const playButton = document.querySelector(".play-button");
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
   const highScoreLi1 = document.querySelector("#high-score-1");
   const highScoreLi2 = document.querySelector("#high-score-2");
   const highScoreLi3 = document.querySelector("#high-score-3");
+  const difficultyDisplay = document.querySelector(".difficulty-text");
+  const easyButton = document.querySelector("#easy-button");
+  const mediumButton = document.querySelector("#medium-button");
+  const hardButton = document.querySelector("#hard-button");
 
   // VARIABLES
   const width = 10;
@@ -13,7 +17,7 @@ function initiation() {
   const cells = [];
 
   let applePosition = 0;
-  let snake = [43, 42, 41, 40];
+  let snake = [42, 41, 40];
   let directionOfTravel = "right";
 
   let snakeSpeed = 500;
@@ -27,7 +31,7 @@ function initiation() {
     63, 66, 69, 70, 71, 72, 73, 76, 77, 78, 79,
   ];
 
-  // ! Grid functions
+  // GRID FUNCTIONS
 
   function createGrid() {
     for (let index = 0; index < gridCellCount; index++) {
@@ -40,7 +44,7 @@ function initiation() {
   }
   createGrid();
 
-  // ! APPLE FUNCTIONS
+  // APPLE FUNCTIONS
 
   function addApple(position) {
     cells[position].classList.add("apple");
@@ -64,9 +68,9 @@ function initiation() {
     addApple(applePosition);
   }
 
-  // ! SNAKE FUNCTIONS
+  // SNAKE FUNCTIONS
 
-  // ? SPAWN SNAKE
+  // ---- SPAWN SNAKE
 
   function renderSnake() {
     snake.forEach((cell) => cells[cell].classList.add("snake"));
@@ -76,7 +80,7 @@ function initiation() {
     snake.forEach((cell) => cells[cell].classList.remove("snake"));
   }
 
-  // ? GET DIRECTION OF TRAVEL
+  // ---- GET DIRECTION OF TRAVEL
 
   function getDirectionOfTravel(event) {
     if (event.keyCode === 39 && directionOfTravel !== "left") {
@@ -91,7 +95,7 @@ function initiation() {
     return directionOfTravel;
   }
 
-  // ? MOVING THE SNAKE
+  // ---- MOVING THE SNAKE
 
   function moveRight() {
     snake.pop();
@@ -145,7 +149,7 @@ function initiation() {
     }, snakeSpeed);
   }
 
-  // ? CHECK IF EATS APPLE
+  // CHECK IF EATS APPLE
 
   function eatsApple() {
     if (cells[snake[0]].classList.contains("apple")) {
@@ -159,7 +163,7 @@ function initiation() {
     }
   }
 
-  // ? CHECK FOR COLLISION
+  // CHECK FOR COLLISION
 
   function checkForCollision() {
     if (
@@ -180,28 +184,46 @@ function initiation() {
     }
   }
 
-  // ! SCORE FUNCTIONS
+  // SCORE FUNCTIONS
 
   function scoreUp() {
     currentScore += 1;
     score.innerHTML = currentScore;
   }
 
-  // ! SPEED UP FUNCTIONS
+  // SPEED UP FUNCTIONS
 
   function speedUp() {
     snakeSpeed = snakeSpeed - 20;
     return snakeSpeed;
   }
 
-  // ! START GAME FUNCTIONS
+  // CHOOSE DIFFICULTY FUNCTIONS
+  function easyDifficulty() {
+    difficultyDisplay.textContent = "Noob";
+    snakeSpeed = 500;
+    console.log(snakeSpeed);
+  }
+
+  function mediumDifficulty() {
+    difficultyDisplay.textContent = "Veteran";
+    snakeSpeed = 300;
+    console.log(snakeSpeed);
+  }
+
+  function hardDifficulty() {
+    difficultyDisplay.textContent = "Expert";
+    snakeSpeed = 100;
+  }
+
+  // START GAME FUNCTIONS
   function startGame() {
     removeGg();
     removeSnake();
     snake = [43, 42, 41, 40];
     clearInterval(timer);
     directionOfTravel = "right";
-    snakeSpeed = 500;
+    // snakeSpeed = 500;
     currentScore = 0;
     score.innerHTML = currentScore;
     renderSnake();
@@ -210,7 +232,7 @@ function initiation() {
     moveSnake();
   }
 
-  // ! END GAME FUNCTIONS
+  // END GAME FUNCTIONS
 
   function gameOver() {
     removeSnake();
@@ -228,6 +250,8 @@ function initiation() {
   function removeGg() {
     gG.forEach((cell) => cells[cell].classList.remove("snake"));
   }
+
+  // CHECK HIGH SCORE
 
   function checkHighScore() {
     if (currentScore > highScores[0]) {
@@ -250,10 +274,13 @@ function initiation() {
     }
   }
 
-  // ! SETTERS
+  // SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
   playButton.addEventListener("click", startGame);
+  easyButton.addEventListener("click", easyDifficulty);
+  mediumButton.addEventListener("click", mediumDifficulty);
+  hardButton.addEventListener("click", hardDifficulty);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
