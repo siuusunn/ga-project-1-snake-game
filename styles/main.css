@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Press Start 2P", sans-serif;
 }
 
 .background {
@@ -33,8 +34,6 @@ body {
   border-radius: 20px;
 }
 .grid div {
-  /* border: solid 1px #31372b;
-  border: solid 0.1px green; */
   border-radius: 1px;
   margin: 0;
   padding: 0;
@@ -54,6 +53,72 @@ body {
   justify-content: center;
   align-items: center;
   margin-left: 50px;
+  width: 350px;
+  text-align: center;
+}
+
+button {
+  font-family: "Press Start 2P", cursive;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.difficulty-buttons {
+  margin-bottom: 20px;
+}
+
+#easy-button {
+  background-color: #92cd41;
+}
+
+#easy-button:hover {
+  background-color: #76c442;
+  box-shadow: inset -4px -4px 0px 0px #4aa52e;
+}
+
+#easy-button:active {
+  background-color: #76c442;
+  box-shadow: inset 4px 4px 0px 0px #4aa52e;
+}
+
+#medium-button {
+  background-color: #f7d51d;
+}
+
+#medium-button:hover {
+  background-color: #f2c409;
+  box-shadow: inset -4px -4px 0px 0px #e59400;
+}
+
+#medium-button:active {
+  background-color: #f2c409;
+  box-shadow: inset 4px 4px 0px 0px #e59400;
+}
+
+#hard-button {
+  background-color: #e76e55;
+}
+
+#hard-button:hover {
+  background-color: #ce372b;
+  box-shadow: inset -4px -4px 0px 0px #8c2022;
+}
+
+#hard-button:active {
+  background-color: #ce372b;
+  box-shadow: inset 4px 4px 0px 0px #8c2022;
+}
+
+.play-button:hover {
+  background-color: lightgray;
+  color: black;
+  box-shadow: inset -4px -4px 0px 0px darkgray;
+}
+
+.play-button:active {
+  background-color: lightgray;
+  box-shadow: inset 4px 4px 0px 0px darkgray;
 }
 
 .high-score-table {

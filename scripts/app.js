@@ -202,13 +202,11 @@ function initiation() {
   function easyDifficulty() {
     difficultyDisplay.textContent = "Noob";
     snakeSpeed = 500;
-    console.log(snakeSpeed);
   }
 
   function mediumDifficulty() {
     difficultyDisplay.textContent = "Veteran";
     snakeSpeed = 300;
-    console.log(snakeSpeed);
   }
 
   function hardDifficulty() {
