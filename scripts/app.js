@@ -193,10 +193,10 @@ function initiation() {
     clearInterval(timer);
     directionOfTravel = "right";
     snakeSpeed = 500;
-    currentScore = "0";
+    currentScore = 0;
+    score.innerHTML = currentScore;
     renderSnake();
     gameOverText.innerHTML = "";
-    score.innerHTML = "0";
     playButton.disabled = true;
     spawnApple();
     moveSnake();
