@@ -22,6 +22,7 @@ function initiation() {
   let directionOfTravel = "right";
 
   let snakeSpeed = 500;
+  let currentDifficulty = "easy";
   let timer;
 
   let currentScore = 0;
@@ -202,16 +203,19 @@ function initiation() {
   // CHOOSE DIFFICULTY FUNCTIONS
   function easyDifficulty() {
     difficultyDisplay.textContent = "Noob";
+    currentDifficulty = "easy";
     snakeSpeed = 500;
   }
 
   function mediumDifficulty() {
     difficultyDisplay.textContent = "Veteran";
+    currentDifficulty = "medium";
     snakeSpeed = 300;
   }
 
   function hardDifficulty() {
     difficultyDisplay.textContent = "Expert";
+    currentDifficulty = "hard";
     snakeSpeed = 100;
   }
 
@@ -227,7 +231,19 @@ function initiation() {
     renderSnake();
     playButton.disabled = true;
     spawnApple();
+    checkGameSpeed();
     moveSnake();
+  }
+
+  //CHECK GAME SPEED TO ALLOW RESET
+  function checkGameSpeed() {
+    if (currentDifficulty === "easy") {
+      snakeSpeed = 500;
+    } else if (currentDifficulty === "medium") {
+      snakeSpeed = 300;
+    } else if (currentDifficulty === "hard") {
+      snakeSpeed = 100;
+    }
   }
 
   // END GAME FUNCTIONS
