@@ -6,11 +6,18 @@ function initiation() {
   const gameOverText = document.querySelector(".game-over");
   const playAgainButton = document.querySelector(".play-again-button");
 
-  // ! Grid functions
-
+  // VARIABLES
   const width = 10;
   const gridCellCount = width * width;
   const cells = [];
+
+  let applePosition = 0;
+  let snake = [3, 2, 1, 0];
+  let directionOfTravel = "right";
+
+  let currentScore = 0;
+
+  // ! Grid functions
 
   function createGrid() {
     for (let index = 0; index < gridCellCount; index++) {
@@ -21,14 +28,9 @@ function initiation() {
       grid.appendChild(cell);
     }
   }
-
   createGrid();
 
   // ! APPLE FUNCTIONS
-
-  let applePosition = 0;
-  const snake = [3, 2, 1, 0];
-  let directionOfTravel = "right";
 
   function addApple(position) {
     cells[position].classList.add("apple");
@@ -67,18 +69,14 @@ function initiation() {
   // ? GET DIRECTION OF TRAVEL
 
   function getDirectionOfTravel(event) {
-    switch (event.keyCode) {
-      case 39:
-        directionOfTravel = "right";
-        break;
-      case 40:
-        directionOfTravel = "down";
-        break;
-      case 37:
-        directionOfTravel = "left";
-        break;
-      case 38:
-        directionOfTravel = "up";
+    if (event.keyCode === 39 && directionOfTravel !== "left") {
+      directionOfTravel = "right";
+    } else if (event.keyCode === 40 && directionOfTravel !== "up") {
+      directionOfTravel = "down";
+    } else if (event.keyCode === 37 && directionOfTravel !== "right") {
+      directionOfTravel = "left";
+    } else if (event.keyCode === 38 && directionOfTravel !== "down") {
+      directionOfTravel = "up";
     }
     return directionOfTravel;
   }
@@ -120,23 +118,27 @@ function initiation() {
         removeSnake();
         moveRight();
         renderSnake();
+        return directionOfTravel;
       } else if (directionOfTravel === "down" && y < width - 1) {
         removeSnake();
         moveDown();
         renderSnake();
+        return directionOfTravel;
       } else if (directionOfTravel === "left" && x > 0) {
         removeSnake();
         moveLeft();
         renderSnake();
+        return directionOfTravel;
       } else if (directionOfTravel === "up" && y > 0) {
         removeSnake();
         moveUp();
         renderSnake();
+        return directionOfTravel;
       }
     }, snakeSpeed);
   }
 
-  // ? EATING THE APPLE
+  // ? CHECK IF EATS APPLE
 
   function eatsApple() {
     if (cells[snake[0]].classList.contains("apple")) {
@@ -171,8 +173,6 @@ function initiation() {
 
   // ! SCORE FUNCTIONS
 
-  let currentScore = 0;
-
   function scoreUp() {
     currentScore += 1;
     score.innerHTML = currentScore;
@@ -199,10 +199,20 @@ function initiation() {
 
   // ! PLAY AGAIN FUNCTIONS
 
+  function playAgain() {
+    removeSnake();
+    snake = [3, 2, 1, 0];
+    renderSnake();
+    gameOverText.innerHTML = "";
+    spawnApple();
+    moveSnake();
+  }
+
   // ! SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
   startButton.addEventListener("click", startGame);
+  playAgainButton.addEventListener("click", playAgain);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
