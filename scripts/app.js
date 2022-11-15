@@ -3,7 +3,6 @@ function initiation() {
   const playButton = document.querySelector(".play-button");
   const grid = document.querySelector(".grid");
   const score = document.querySelector(".score");
-  const highScoreTable = document.querySelector(".high-score-table");
   const highScoreLi1 = document.querySelector("#high-score-1");
   const highScoreLi2 = document.querySelector("#high-score-2");
   const highScoreLi3 = document.querySelector("#high-score-3");
@@ -232,9 +231,17 @@ function initiation() {
 
   function checkHighScore() {
     if (currentScore > highScores[0]) {
+      highScores[1] = highScores[0];
+      highScoreLi2.textContent = highScores[0];
       highScores[0] = currentScore;
       highScoreLi1.textContent = currentScore;
-    } else if (currentScore < highScores[0] && currentScore > highScores[1]) {
+    } else if (
+      currentScore < highScores[0] &&
+      currentScore > highScores[1] &&
+      currentScore > highScores[2]
+    ) {
+      highScores[2] = highScores[1];
+      highScoreLi3.textContent = highScores[1];
       highScores[1] = currentScore;
       highScoreLi2.textContent = currentScore;
     } else if (currentScore < highScores[1] && currentScore > highScores[2]) {

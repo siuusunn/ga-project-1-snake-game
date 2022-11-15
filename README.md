@@ -11,9 +11,3 @@ Requirements
 Responsive design
 Multi-player mode
 High score table
-
-Day 01:
-
-- Basic game board (10x10)
-- Randomly placed apple
-- 2-cell long snake that can be moved around using arrow keys, cannot go over the edge. (Advanced logic not applied yet)
