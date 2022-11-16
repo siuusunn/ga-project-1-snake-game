@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url("./images/Nokia-8210-edited.png");
+  background: url("../assets/images/Nokia-8210-edited.png");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -44,10 +44,10 @@ body {
   min-width: 14px;
 }
 .apple {
-  background-image: url("./images/apple.png");
+  background-image: url("../assets/images/apple.png");
 }
 .snake {
-  background-image: url("./images/Snake-pixel.png");
+  background-image: url("../assets/images/Snake-pixel.png");
 }
 
 /* NUM PAD CONTROLS */
