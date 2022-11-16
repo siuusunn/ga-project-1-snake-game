@@ -2,7 +2,7 @@
 
 ## Project description
 
-As the first project in the SEI course, we need to build a web game using JavaScript. I chose Snake Game as it was one of my favorite games when I was a kid, and I remember vividly playing this game on my mom's Nokia 8210. This has been a fun project to work on, and to polish and challenge my JavScript skills.
+As the first project in the SEI course, we were tasked to build a web game using JavaScript. I chose Snake Game as it was one of my favorite games when I was a kid, and I remember vividly playing this game on my mom's Nokia 8210. This has been a fun project to work on, and to polish and challenge my JavScript skills.
 
 I dedicate this project to my mom and her white Nokia 8210 from 1999. :)
 
@@ -319,6 +319,23 @@ So I experimented with `loops`. As I do not know how many times the loop will ru
       randomPosition = Math.floor(Math.random() * gridCellCount);
     }
 
+### Rendering Snake
+
+I was stuck in this part for a long time as I was trying to manipulate the entire `snake` array when the snake moves. After discussion with the instructor, I found a great way to handle this which is only to change the first and the last items in the array according to the `directionOfTravel`.
+
+### Check For Collision
+
+By far the most difficult part in the development for me, hard stuck here for HOURS! As I am really really bad at math, I had to draw the game board on a piece of paper and manually count them so that I can make sure the conditions I wrote are correct.
+
+To check if the snake is hitting its own body, I wrote these conditions:
+
+    if (cells[snake[0] + 1].classList.contains("snake") ||
+      cells[snake[0] + 10].classList.contains("snake")) ||
+      cells[snake[0] - 1].classList.contains("snake")) ||
+      cells[snake[0] - 10].classList.contains("snake"))
+
+The logic seemed right but it didn't work. So I experimented and tested around, and finally got it working by adding a condition to check the `directionOfTeavel` to each of the conditions above.
+
 ### Moving the Snake
 
 At the early development stage, I created the `moveSnake()` function to move the snake with `setinterval` and another function to manually control the snake. Doing so caused a major bug where the user is able to move the snake around after `gameOver()` is executed.
@@ -345,8 +362,48 @@ This problem was solved by first declaring a `currentDifficulty` variable. When 
 
 The game is controlled by arrow keys but when the keys are pressed, they will also scroll the page, causing an unpleasant experience when the game is running. After some research I found out that I can prevent this with `.preventDefault()`. So I added a new `preventScrolling()`function to excute this and tie it in with `window.addEventListener("keydown")`
 
-What technical challenges did you come across?
-Why were these challenges?
-What problem solving did you do to rectify them?
-Team dynamics/ Project management
-Tools/Tech you used
+## Wins
+
+### Breaking Down Codes in Small Functions
+
+I wrote a function for each action and it really helped with the readability (at least for myself!), and made it easier to debug when something went wrong. Also makes my life easier when I wanted to add extra functionalities to the game!
+
+### While loops
+
+I am not very confident with `while` loops, I have written many that just would not stop running. But I managed to identify that it needed to be used when spawning a random apple, and wrote one that functions perfectly, and now I understand fully how to work with them.
+
+### The `checkForCollision()` Code Block
+
+After some HARD calculations, HARD googling, HARD scratching my head off and HARD experimenting, I got this to work without causing bugs (It was a glorious moment). Now I know that which condition comes first matters **_A LOT_**, and if there are a mountain of conditions, use `if` statements instead of `switch`.
+
+### The Design
+
+I am very happy with how the design turned out: an old-school, 8-bit vibe webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
+
+The part that I am especially proud of is that the number pad on the phone actually can be used as controls. And that when the webpage is loaded on the screen, it is just the phone with basic number pad controls!
+
+## Key Learnings/ Takeaways
+
+### While Loops
+
+As mentioned above, I now fully understands the mechanics of a `while` loop and can write one with much more confidence.
+
+### Set Intervals & Functions
+
+I learned a lot about how to work with `setInterval` and `clearInterval`. And which function comes first in a code block makes a huge difference and can cause major bugs. From now on I will make sure to double or triple check this!
+
+### DOM Elements & Event Listeners
+
+Through this project, I became very confident in using DOM elements and event listeners.
+
+### Small Functions
+
+It helped tremendously on debugging, building new functionalities and readability.
+
+### Code Review
+
+Even though this is a solo project, there are two other classmates who have chosen the same game. As I was more ahead with my progress, I was able to give pointers to my classmates after reading their code when they asked for ideas, or point out what went wrong in their code to help them get unstuck!
+
+## Bugs
+
+## Future Improvements
