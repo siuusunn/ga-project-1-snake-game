@@ -39,7 +39,6 @@ function initiation() {
     for (let index = 0; index < gridCellCount; index++) {
       const cell = document.createElement("div");
       cell.setAttribute("data-index", index);
-      // cell.setAttribute("class", "cell");
       cells.push(cell);
       grid.appendChild(cell);
     }
