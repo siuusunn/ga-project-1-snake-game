@@ -11,6 +11,7 @@ function initiation() {
   const easyButton = document.querySelector("#easy-button");
   const mediumButton = document.querySelector("#medium-button");
   const hardButton = document.querySelector("#hard-button");
+  const mobilePlayButton = document.querySelector(".mobile-play-button");
   const numPadUpButton = document.querySelector(".up-button");
   const numPadDownButton = document.querySelector(".down-button");
   const numPadLeftButton = document.querySelector(".left-button");
@@ -338,6 +339,7 @@ function initiation() {
   numPadDownButton.addEventListener("click", numPadControlDown);
   numPadLeftButton.addEventListener("click", numPadControlLeft);
   numPadRightButton.addEventListener("click", numPadControlRight);
+  mobilePlayButton.addEventListener("click", startGame);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);

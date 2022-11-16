@@ -52,6 +52,18 @@ body {
 
 /* NUM PAD CONTROLS */
 
+.mobile-play-button {
+  margin-top: 20px;
+  margin-left: 15px;
+  background-color: #040404;
+  border: transparent;
+  border-radius: 90px;
+  color: white;
+  width: 120px;
+  display: none;
+  cursor: pointer;
+}
+
 .number-control {
   background-color: transparent;
   border: transparent;
@@ -187,6 +199,14 @@ li {
     margin-right: 0px;
   }
 
+  .mobile-play-button {
+    display: inline;
+  }
+
+  .control-buttons {
+    margin-top: 85px;
+  }
+
   .instructions-text {
     display: none;
   }
@@ -196,6 +216,7 @@ li {
   .difficulty-buttons {
     display: none;
   }
+
   .texts-and-buttons {
     display: none;
   }
