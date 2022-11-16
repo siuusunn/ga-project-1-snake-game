@@ -189,7 +189,7 @@ function initiation() {
   // SCORE FUNCTIONS
 
   function scoreUp() {
-    currentScore += 1;
+    currentScore += 100;
     score.innerHTML = currentScore;
   }
 
@@ -288,6 +288,18 @@ function initiation() {
     }
   }
 
+  // PREVENT ARROW KEYS FROM SCROLLING THE PAGE TEST
+  function preventScrolling(event) {
+    if (
+      event.keyCode === 37 ||
+      event.keyCode === 38 ||
+      event.keyCode === 39 ||
+      event.keyCode === 40
+    ) {
+      event.preventDefault();
+    }
+  }
+
   // SETTERS
 
   window.addEventListener("keydown", getDirectionOfTravel);
@@ -295,6 +307,7 @@ function initiation() {
   easyButton.addEventListener("click", easyDifficulty);
   mediumButton.addEventListener("click", mediumDifficulty);
   hardButton.addEventListener("click", hardDifficulty);
+  window.addEventListener("keydown", preventScrolling);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
