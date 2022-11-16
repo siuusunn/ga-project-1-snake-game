@@ -32,11 +32,6 @@ function initiation() {
   let currentScore = 0;
   const highScores = [0, 0, 0];
 
-  // const gG = [
-  //   20, 21, 22, 23, 26, 27, 28, 29, 30, 36, 40, 46, 50, 52, 53, 56, 58, 59, 60,
-  //   63, 66, 69, 70, 71, 72, 73, 76, 77, 78, 79,
-  // ];
-
   // GRID FUNCTIONS
 
   function createGrid() {
@@ -102,6 +97,7 @@ function initiation() {
   }
 
   // ---- NUM PAD CONTROLS
+
   function numPadControlUp() {
     if (directionOfTravel !== "down") {
       return (directionOfTravel = "up");
@@ -230,6 +226,7 @@ function initiation() {
   }
 
   // CHOOSE DIFFICULTY FUNCTIONS
+
   function easyDifficulty() {
     difficultyDisplay.textContent = "Noob";
     currentDifficulty = "easy";
@@ -249,6 +246,7 @@ function initiation() {
   }
 
   // START GAME FUNCTIONS
+
   function startGame() {
     removeGameOverText();
     removeSnake();
@@ -265,6 +263,7 @@ function initiation() {
   }
 
   //CHECK GAME SPEED TO ALLOW RESET
+
   function checkGameSpeed() {
     if (currentDifficulty === "easy") {
       snakeSpeed = 500;

@@ -48,20 +48,11 @@ body {
 }
 
 .number-control {
-  /* background-color: transparent; */
-  border: 1px red solid;
+  background-color: transparent;
+  border: transparent;
   width: 80px;
+  color: transparent;
 }
-
-/* .up-and-down-buttons-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 135px;
-  margin-top: 135px;
-  margin-left: 15px;
-} */
 
 .control-buttons {
   display: flex;
