@@ -126,23 +126,31 @@ function initiation() {
   // ---- MOVING THE SNAKE
 
   function moveRight() {
+    removeSnake();
     snake.pop();
     snake.unshift(snake[0] + 1);
+    renderSnake();
   }
 
   function moveLeft() {
+    removeSnake();
     snake.pop();
     snake.unshift(snake[0] - 1);
+    renderSnake();
   }
 
   function moveUp() {
+    removeSnake();
     snake.pop();
     snake.unshift(snake[0] - 10);
+    renderSnake();
   }
 
   function moveDown() {
+    removeSnake();
     snake.pop();
     snake.unshift(snake[0] + 10);
+    renderSnake();
   }
 
   function moveSnake() {
@@ -154,24 +162,16 @@ function initiation() {
       checkForCollision();
 
       if (directionOfTravel === "right" && x < width - 1) {
-        removeSnake();
         moveRight();
-        renderSnake();
         return directionOfTravel;
       } else if (directionOfTravel === "down" && y < width - 1) {
-        removeSnake();
         moveDown();
-        renderSnake();
         return directionOfTravel;
       } else if (directionOfTravel === "left" && x > 0) {
-        removeSnake();
         moveLeft();
-        renderSnake();
         return directionOfTravel;
       } else if (directionOfTravel === "up" && y > 0) {
-        removeSnake();
         moveUp();
-        renderSnake();
         return directionOfTravel;
       }
     }, snakeSpeed);
