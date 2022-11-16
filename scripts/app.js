@@ -11,6 +11,10 @@ function initiation() {
   const easyButton = document.querySelector("#easy-button");
   const mediumButton = document.querySelector("#medium-button");
   const hardButton = document.querySelector("#hard-button");
+  const upButton = document.querySelector(".up-button");
+  const downButton = document.querySelector(".down-button");
+  const leftButton = document.querySelector(".left-button");
+  const rightButton = document.querySelector(".right-button");
 
   // VARIABLES
   const width = 10;
@@ -157,7 +161,7 @@ function initiation() {
     if (cells[snake[0]].classList.contains("apple")) {
       spawnApple();
       scoreUp();
-      snake.push("10");
+      snake.push(42);
       clearInterval(timer);
       renderSnake();
       speedUp();
@@ -288,7 +292,7 @@ function initiation() {
     }
   }
 
-  // PREVENT ARROW KEYS FROM SCROLLING THE PAGE TEST
+  // PREVENT ARROW KEYS FROM SCROLLING THE PAGE
   function preventScrolling(event) {
     if (
       event.keyCode === 37 ||

@@ -47,6 +47,48 @@ body {
   background-image: url("./images/Snake-pixel.png");
 }
 
+.number-control {
+  /* background-color: transparent; */
+  border: 1px red solid;
+  width: 80px;
+}
+
+/* .up-and-down-buttons-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 135px;
+  margin-top: 135px;
+  margin-left: 15px;
+} */
+
+.control-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 135px;
+  max-height: 135px;
+  margin-top: 135px;
+  margin-left: 15px;
+}
+
+.left-and-right-buttons-div {
+  display: flex;
+  justify-content: space-between;
+  min-width: 290px;
+  max-width: 290px;
+  margin-top: -10px;
+}
+
+.left-button,
+.right-button {
+  height: 38px;
+}
+
+/* RIGHT SECTION */
+
 .texts-and-buttons {
   display: flex;
   flex-direction: column;
