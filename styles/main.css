@@ -5,6 +5,8 @@ body {
   font-family: "Press Start 2P", sans-serif;
 }
 
+/* LEFT SECTION */
+
 .background {
   display: flex;
   flex-direction: column;
@@ -15,6 +17,7 @@ body {
   background-position: center;
   min-height: 900px;
   min-width: 350px;
+  margin-left: 60px;
 }
 
 .grid {
@@ -46,6 +49,8 @@ body {
 .snake {
   background-image: url("./images/Snake-pixel.png");
 }
+
+/* NUM PAD CONTROLS */
 
 .number-control {
   background-color: transparent;
@@ -86,6 +91,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-left: 50px;
+  margin-right: 80px;
   width: 350px;
   text-align: center;
 }
@@ -169,4 +175,35 @@ button {
 li {
   padding: 1px;
   margin-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    min-width: 350px;
+  }
+
+  .background {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .instructions-text {
+    display: none;
+  }
+  .choose-difficulty-text {
+    display: none;
+  }
+  .difficulty-buttons {
+    display: none;
+  }
+  .texts-and-buttons {
+    display: none;
+  }
+
+  .score-text {
+    display: none;
+  }
+  .high-score-table {
+    display: none;
+  }
 }
