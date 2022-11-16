@@ -58,7 +58,7 @@ body {
   background-color: #040404;
   border: transparent;
   border-radius: 90px;
-  color: white;
+  color: #a4a8a7;
   width: 120px;
   display: none;
   cursor: pointer;
@@ -207,24 +207,7 @@ li {
     margin-top: 85px;
   }
 
-  .instructions-text {
-    display: none;
-  }
-  .choose-difficulty-text {
-    display: none;
-  }
-  .difficulty-buttons {
-    display: none;
-  }
-
   .texts-and-buttons {
-    display: none;
-  }
-
-  .score-text {
-    display: none;
-  }
-  .high-score-table {
     display: none;
   }
 }
