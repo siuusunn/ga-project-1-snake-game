@@ -76,10 +76,20 @@ All my planning for this project were either drawn or written out on Excalidraw.
 
 My first step of planning was to list out all the features that the MVP should have:
 
-Did you do any sketches? If so, discuss this and include images.
+![MVP Features](/assets/readme_images/MVP_features.png)
 
-Any wireframes of the front end and UI? You did? Then explain this and include images.
+And then I listed out the important mechanics of the moving elements in the game. If these boxes are not ticked, the game will break:
 
-Use a project management tool to plan the sprint? If so, talk through this - what tool did you use?
+![Important mechanics](/assets/readme_images/important_mechanics.png)
 
-Any pseudocode?
+I also drew a very simple wireframe to represent the layout I had in mind (mimicking a phone) which helped me think of what elements to use in the HTML:
+
+![Wireframe](/assets/readme_images/Wireframe.png)
+
+And listed all the functions that I would need for the MVP:
+
+![Planning functions list](/assets/readme_images/Planning_functions.png)
+
+---
+
+## Code Process
