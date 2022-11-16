@@ -39,7 +39,7 @@ function initiation() {
     for (let index = 0; index < gridCellCount; index++) {
       const cell = document.createElement("div");
       cell.setAttribute("data-index", index);
-      cell.setAttribute("class", "cell");
+      // cell.setAttribute("class", "cell");
       cells.push(cell);
       grid.appendChild(cell);
     }
@@ -75,11 +75,11 @@ function initiation() {
   // ---- SPAWN SNAKE
 
   function renderSnake() {
-    snake.forEach((cell) => cells[cell].classList.add("snake"));
+    snake.forEach((snakeBody) => cells[snakeBody].classList.add("snake"));
   }
 
   function removeSnake() {
-    snake.forEach((cell) => cells[cell].classList.remove("snake"));
+    snake.forEach((snakeBody) => cells[snakeBody].classList.remove("snake"));
   }
 
   // ---- GET DIRECTION OF TRAVEL
