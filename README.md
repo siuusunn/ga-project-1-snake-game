@@ -1,14 +1,23 @@
-# ga-project-01
+# GA PROJECT 01 - ALICE LO
 
-Snake Game
-Requirements
+## Project description
 
-- The snake should be able to eat food to grow bigger
+Build a snake game with the three key requirements below:
+
+- The snake should be able to eat the apple and grow longer
+- The snake speeds up as it eats more apples
 - The game should end when the snake hits the wall or itself
-- Snake speeds up as it eats more
 
-// EXTRAS
-Responsive design
-Multi-player mode (NOT POSSIBLE FOR ME)
-High score table - DONE
-Choose difficulty - DONE
+Extra enhancements:
+
+- Player should be able to choose difficulty
+- A high score table to record previous high scores
+- Responsive design for mobile users
+
+---
+
+## Deploment link
+
+https://siuusunn.github.io/ga-project-01/
+
+---
