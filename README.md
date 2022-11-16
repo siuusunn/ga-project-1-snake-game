@@ -291,6 +291,28 @@ To further tie in with the 8-bit/ pixelated theme of the original game, I used `
 
 And styled the buttons in a similar aesthetic:
 
+    button {
+      font-family: "Press Start 2P", sans-serif;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #easy-button {
+      background-color: #92cd41;
+    }
+
+    #easy-button:hover {
+      background-color: #76c442;
+      box-shadow: inset -4px -4px 0px 0px #4aa52e;
+    }
+
+    #easy-button:active {
+      background-color: #76c442;
+      box-shadow: inset 4px 4px 0px 0px #4aa52e;
+    }
+
+Results:
+
 ![Buttons Example](./assets/readme_images/buttons_example.png)
 
 #### Responsive Design
@@ -380,6 +402,8 @@ After some HARD calculations, HARD googling, HARD scratching my head off and HAR
 
 I am very happy with how the design turned out: an old-school, 8-bit vibe webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
 
+<!-- INSERT A SCREENCAP OF WEBPAGE HERE -->
+
 The part that I am especially proud of is that the number pad on the phone actually can be used as controls. And that when the webpage is loaded on the screen, it is just the phone with basic number pad controls!
 
 ## Key Learnings/ Takeaways
@@ -404,6 +428,19 @@ It helped tremendously on debugging, building new functionalities and readabilit
 
 Even though this is a solo project, there are two other classmates who have chosen the same game. As I was more ahead with my progress, I was able to give pointers to my classmates after reading their code when they asked for ideas, or point out what went wrong in their code to help them get unstuck!
 
+### Box Shadow Property
+
+Gained a deeper understanding of `box-shadow` property in CSS when trying to create the 8-bit aesthetic for the buttons.
+
 ## Bugs
 
+- If the user press several control keys rapidly within one interval it can cause the snake to hit its own body and end the game.
+
+  > No issues if the keys are pressed within one interval time **_and_** the last key pressed doesn not contradict with the previous direction.
+
+  > > Possible reason: Within one interval window, if several keys are pressed and the last key would make the snake go in the direction of the body, user will not have sufficient time to change direction again before the interval ends, thus making the snake hit its own body causing the game to end.
+
 ## Future Improvements
+
+- Expanding the game board `grid` (20x20, 30x30 etc.)
+- Make the game board `grid` in rectangular shape to match the 8210 phone screen
