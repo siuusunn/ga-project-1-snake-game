@@ -11,10 +11,10 @@ function initiation() {
   const easyButton = document.querySelector("#easy-button");
   const mediumButton = document.querySelector("#medium-button");
   const hardButton = document.querySelector("#hard-button");
-  const upButton = document.querySelector(".up-button");
-  const downButton = document.querySelector(".down-button");
-  const leftButton = document.querySelector(".left-button");
-  const rightButton = document.querySelector(".right-button");
+  const numPadUpButton = document.querySelector(".up-button");
+  const numPadDownButton = document.querySelector(".down-button");
+  const numPadLeftButton = document.querySelector(".left-button");
+  const numPadRightButton = document.querySelector(".right-button");
 
   // VARIABLES
   const width = 10;
@@ -99,6 +99,31 @@ function initiation() {
       directionOfTravel = "up";
     }
     return directionOfTravel;
+  }
+
+  // ---- NUM PAD CONTROLS
+  function numPadControlUp() {
+    if (directionOfTravel !== "down") {
+      return (directionOfTravel = "up");
+    }
+  }
+
+  function numPadControlDown() {
+    if (directionOfTravel !== "up") {
+      return (directionOfTravel = "down");
+    }
+  }
+
+  function numPadControlLeft() {
+    if (directionOfTravel !== "right") {
+      return (directionOfTravel = "left");
+    }
+  }
+
+  function numPadControlRight() {
+    if (directionOfTravel !== "left") {
+      return (directionOfTravel = "right");
+    }
   }
 
   // ---- MOVING THE SNAKE
@@ -253,8 +278,6 @@ function initiation() {
   // END GAME FUNCTIONS
 
   function gameOver() {
-    // removeSnake();
-    // removeApple(applePosition);
     playButton.disabled = false;
     clearInterval(timer);
     displayGameOverText();
@@ -312,6 +335,10 @@ function initiation() {
   mediumButton.addEventListener("click", mediumDifficulty);
   hardButton.addEventListener("click", hardDifficulty);
   window.addEventListener("keydown", preventScrolling);
+  numPadUpButton.addEventListener("click", numPadControlUp);
+  numPadDownButton.addEventListener("click", numPadControlDown);
+  numPadLeftButton.addEventListener("click", numPadControlLeft);
+  numPadRightButton.addEventListener("click", numPadControlRight);
 }
 
 window.addEventListener("DOMContentLoaded", initiation);
