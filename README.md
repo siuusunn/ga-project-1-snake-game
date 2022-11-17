@@ -434,7 +434,7 @@ Gained a deeper understanding of `box-shadow` property in CSS when trying to cre
 
 ## Bugs
 
-- If the user press several control keys rapidly within one interval it can cause the snake to hit its own body and end the game.
+- If the user presses several control keys rapidly within one interval it can cause the snake to hit its own body and end the game.
 
   > Possible reason: Within one interval window, if several keys are pressed and the last key would make the snake go in the direction of the body, user will not have sufficient time to change direction again before the interval ends, thus making the snake hit its own body causing the game to end.
 
