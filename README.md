@@ -10,21 +10,25 @@ I dedicate this project to my mom and her white Nokia 8210 from 1999. :)
 
 https://siuusunn.github.io/ga-project-01/
 
-## Getting Started/ Code Installation
-
-<!-- NEED MORE INFO ON WHAT TO WRITE HERE -->
+<!-- ## Getting Started/ Code Installation
 
 Instructions
 
 Explain how the reader accesses your code. Include a step by step approach.
 
-Insert your Getting Started/Code Installation here:
+Insert your Getting Started/Code Installation here: -->
 
 ## Working Team & Timeframe
 
 A solo project by Alice Lo (https://github.com/siuusunn).
 
-Project brief was received on 9th Nov 2022 and I started working on the project on 10th Nov 2022. MVP was finished on 13th Nov 2022.
+> 09 Nov 2022 - Project brief received
+>
+> 10 Nov 2022 - Development started
+>
+> 13 Nov 2022 - MVP finished
+>
+> 16 Nov 2022 - Project finished
 
 ## Technologies Used
 
