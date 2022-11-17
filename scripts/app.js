@@ -262,7 +262,7 @@ function initiation() {
     moveSnake();
   }
 
-  //CHECK GAME SPEED TO ALLOW RESET
+  //CHECK GAME SPEED TO ALLOW CLEAN RESET
 
   function checkGameSpeed() {
     if (currentDifficulty === "easy") {
@@ -315,6 +315,7 @@ function initiation() {
   }
 
   // PREVENT ARROW KEYS FROM SCROLLING THE PAGE
+
   function preventScrolling(event) {
     if (
       event.keyCode === 37 ||

@@ -76,8 +76,6 @@ Lastly, some bonus features!
 
 ![Planning bonus features](./assets/readme_images/bonus_features.png)
 
----
-
 ## Code Process
 
 I broke down the development into five main pieces and work on them one at a time:
@@ -88,15 +86,11 @@ I broke down the development into five main pieces and work on them one at a tim
 4. Eating the apple
 5. Game over conditions
 
----
-
 ### The Grid
 
 The is the easiest piece in code process. I first created a `div` called `grid` to contain the cells in the HTML. As I wanted to create a 10x10 game board, in JavaScript, I declared a `width` variable with the value of 10, a `gridCellCount` variable with the value of width \* width, and an empty array called `cells`.
 
 Then in the `createGrid()` function, a `for` loop creates 100 `div` each with its own unique `data id`. These are then pushed in the `cells` array and placed inside the `grid`.
-
----
 
 ### The Apple
 
@@ -114,15 +108,15 @@ And then two similar functions to add and remove the apple. Using the number gen
 
 To wrap everything up, a final function for the apple is created called `spawnApple()` which first remove the apple from its current position, get a random position, and then add the apple in the new position. I included a `while` loop here so to prevent the function from generating a cell number where the snake body is.
 
-    function getRandomPosition() {
-      let randomPosition = Math.floor(Math.random() * gridCellCount);
-      while (snake.includes(randomPosition)) {
-        randomPosition = Math.floor(Math.random() * gridCellCount);
-      }
-      return randomPosition;
-    }
-
----
+```js
+function getRandomPosition() {
+  let randomPosition = Math.floor(Math.random() * gridCellCount);
+  while (snake.includes(randomPosition)) {
+    randomPosition = Math.floor(Math.random() * gridCellCount);
+  }
+  return randomPosition;
+}
+```
 
 ### The Snake
 
@@ -138,9 +132,11 @@ First step is to declare `snake` as an array so that it can be extended when it 
 
 To create the snake (and remove) on the game board, two simple functions using `forEach` method are used. A class of `snake` will be added to the corresponding cell, and vice versa.
 
-    function renderSnake() {
-      snake.forEach((snakeBody) => cells[snakeBody].classList.add("snake"));
-    }
+```js
+function renderSnake() {
+  snake.forEach((snakeBody) => cells[snakeBody].classList.add("snake"));
+}
+```
 
 #### Moving the Snake
 
@@ -148,36 +144,48 @@ A `directionOfTravel` variable is created and the default value is `"right"`.
 
 `getDirectionOfTravel()` function is created to capture the `keyCode` when the user press an arrow key. If the user presses "down" arrow key, the function will change the `directionOfTravel` variable to `"down"`, so on so forth.
 
-    if (event.keyCode === 40) {
-      directionOfTravel = "down";
+```js
+if (event.keyCode === 40) {
+  directionOfTravel = "down";
+}
+```
 
 To prevent the snake from going in reverse, I wrote another condition so the user cannot make the snake go to the opposite direction.
 
-    if (event.keyCode === 40 && directionOfTravel !== "up") {
-      directionOfTravel = "down";
+```js
+if (event.keyCode === 40 && directionOfTravel !== "up") {
+  directionOfTravel = "down";
+}
+```
 
 Time to make the snake move for real! I first wrote four movement functions to make the snake move. Take `moveUp()` function for an example, it first remove the snake from its current position, then it `.pop` the last array element (i.e. the "tail"). Then it `.unshift` an element at the beginning of the array (i.e. the "head") with an value of `(snake[0] - 10)`.
 
-    function moveUp() {
-      removeSnake();
-      snake.pop();
-      snake.unshift(snake[0] - 10);
-      renderSnake();
-    }
+```js
+function moveUp() {
+  removeSnake();
+  snake.pop();
+  snake.unshift(snake[0] - 10);
+  renderSnake();
+}
+```
 
 (Since the board is 10x10, +1 = move right, -1 = move left, +10 = move down, -10 = move up).
 
 In the `moveSnake()` function, two variables are decalared:
 
-    const x = snake[0] % width;
-    const y = Math.floor(snake[0] / width);
+```js
+const x = snake[0] % width;
+const y = Math.floor(snake[0] / width);
+```
 
 Four `if` statements are in the functions to cover all four directions. The `x` and `y` declared earlier allow me to prevent the snake from going beyond the wall.
 
-    if (directionOfTravel === "right" && x < width - 1) {
-        moveRight();
-        return directionOfTravel;
-    }
+```js
+if (directionOfTravel === "right" && x < width - 1) {
+  moveRight();
+  return directionOfTravel;
+}
+```
 
 The last step here is to `setInterval` in the `moveSnake()` function to make the snake move automatically in the default speed stored in the `snakeSpeed` variable.
 
@@ -185,17 +193,15 @@ The last step here is to `setInterval` in the `moveSnake()` function to make the
 
 The `getDirectionOfTravel()` function earlier then ties in with the `moveSnake()` function and now the snake is controllable!
 
----
-
 ### Eating the Apple
 
 The `eatsApple()` function is created to check if the snake has eaten the apple. It has a very simple condition to check if the snake head is in the same cell as the apple (thus eating the apple):
 
+```js
     if (cells[snake[0]].classList.contains("apple"))
+```
 
 And then it will excute `spawnApple()` again, make the current score go up, grow the snake with `snake.push()`, clear the interval, render the snake according to the new array, update the `snakeSpeed` and run `moveSnake()` again (so that the snake moves faster everytime it eats an apple!).
-
----
 
 ### Game Over Conditions
 
@@ -208,25 +214,27 @@ I first created a `gameOver()` function which will clear interval when executed.
 
 First is to check if the snake is hitting the wall:
 
-    if ((snake[0] + width >= width * width && directionOfTravel === "down") ||
-      (snake[0] % width === width - 1 && directionOfTravel === "right") ||
-      (snake[0] % width === 0 && directionOfTravel === "left") ||
-      (snake[0] - width <= 0 && directionOfTravel === "up"))
+```js
+if ((snake[0] + width >= width * width && directionOfTravel === "down") ||
+(snake[0] % width === width - 1 && directionOfTravel === "right") ||
+(snake[0] % width === 0 && directionOfTravel === "left") ||
+(snake[0] - width <= 0 && directionOfTravel === "up"))
+```
 
-The second part of each condition above is to allow user to maneuver when the snake is AT the wall.
+The latter part of each condition above is to allow user to maneuver when the snake is AT the wall.
 
-Second is to check if the snake is hitting its own body:
+Second step is to check if the snake is hitting its own body:
 
-    if ((directionOfTravel === "right" && cells[snake[0] + 1].classList.contains("snake")) ||
-      (directionOfTravel === "down" && cells[snake[0] + 10].classList.contains("snake")) ||
-      (directionOfTravel === "left" && cells[snake[0] - 1].classList.contains("snake")) ||
-      (directionOfTravel === "up" && cells[snake[0] - 10].classList.contains("snake")))
+```js
+if ((directionOfTravel === "right" && cells[snake[0] + 1].classList.contains("snake")) ||
+(directionOfTravel === "down" && cells[snake[0] + 10].classList.contains("snake")) ||
+(directionOfTravel === "left" && cells[snake[0] - 1].classList.contains("snake")) ||
+(directionOfTravel === "up" && cells[snake[0] - 10].classList.contains("snake")))
+```
 
 If any of these conditions return `true`, the function `gameOver()` will run, which will clear the interval and display "GAME OVER" text on the webpage.
 
 All the features that the MVP needs are done at this point, so I moved on to enhacing the game.
-
----
 
 ### Enhancements
 
@@ -234,20 +242,22 @@ All the features that the MVP needs are done at this point, so I moved on to enh
 
 I added a `playButton` to start the game. When it's click, it will execute the `startGame()` function:
 
-    function startGame() {
-      removeGameOverText();
-      removeSnake();
-      snake = [43, 42, 41, 40];
-      clearInterval(timer);
-      directionOfTravel = "right";
-      currentScore = 0;
-      score.innerHTML = currentScore;
-      renderSnake();
-      playButton.disabled = true;
-      spawnApple();
-      checkGameSpeed();
-      moveSnake();
-    }
+```js
+function startGame() {
+  removeGameOverText();
+  removeSnake();
+  snake = [43, 42, 41, 40];
+  clearInterval(timer);
+  directionOfTravel = "right";
+  currentScore = 0;
+  score.innerHTML = currentScore;
+  renderSnake();
+  playButton.disabled = true;
+  spawnApple();
+  checkGameSpeed();
+  moveSnake();
+}
+```
 
 It will remove the "GAME OVER" text, reset the snake to its default position and direction, clear the interval, reset the score and user is able to start the game all over again.
 
@@ -289,25 +299,27 @@ To further tie in with the 8-bit/ pixelated theme of the original game, I used `
 
 And styled the buttons in a similar aesthetic:
 
-    button {
-      font-family: "Press Start 2P", sans-serif;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+```css
+button {
+  font-family: "Press Start 2P", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    #easy-button {
-      background-color: #92cd41;
-    }
+#easy-button {
+  background-color: #92cd41;
+}
 
-    #easy-button:hover {
-      background-color: #76c442;
-      box-shadow: inset -4px -4px 0px 0px #4aa52e;
-    }
+#easy-button:hover {
+  background-color: #76c442;
+  box-shadow: inset -4px -4px 0px 0px #4aa52e;
+}
 
-    #easy-button:active {
-      background-color: #76c442;
-      box-shadow: inset 4px 4px 0px 0px #4aa52e;
-    }
+#easy-button:active {
+  background-color: #76c442;
+  box-shadow: inset 4px 4px 0px 0px #4aa52e;
+}
+```
 
 Results:
 
@@ -321,11 +333,13 @@ One idea I had from the start was that when the webpage is opened on a mobile de
 
 Each button will call their respective function on click, and update the `directionOfTravel`, working exactly like the arrow keys.
 
-    function numPadControlUp() {
-      if (directionOfTravel !== "down") {
-        return (directionOfTravel = "up");
-      }
-    }
+```js
+function numPadControlUp() {
+  if (directionOfTravel !== "down") {
+    return (directionOfTravel = "up");
+  }
+}
+```
 
 ## Challenges
 
@@ -335,9 +349,11 @@ To get the apple generated in a random position that is not the snake body is a 
 
 So I experimented with `loops`. As I do not know how many times the loop will run until it gets the desired result, I went with a `while` loop and it tackled the problem perfectly.
 
-    while (snake.includes(randomPosition)) {
-      randomPosition = Math.floor(Math.random() * gridCellCount);
-    }
+```js
+while (snake.includes(randomPosition)) {
+  randomPosition = Math.floor(Math.random() * gridCellCount);
+}
+```
 
 ### Rendering Snake
 
@@ -349,10 +365,12 @@ By far the most difficult part in the development for me, hard stuck here for HO
 
 To check if the snake is hitting its own body, I wrote these conditions:
 
-    if (cells[snake[0] + 1].classList.contains("snake") ||
-      cells[snake[0] + 10].classList.contains("snake")) ||
-      cells[snake[0] - 1].classList.contains("snake")) ||
-      cells[snake[0] - 10].classList.contains("snake"))
+```js
+if (cells[snake[0] + 1].classList.contains("snake") ||
+cells[snake[0] + 10].classList.contains("snake") ||
+cells[snake[0] - 1].classList.contains("snake") ||
+cells[snake[0] - 10].classList.contains("snake"))
+```
 
 The logic seemed right but it didn't work. So I experimented and tested around, and finally got it working by adding a condition to check the `directionOfTeavel` to each of the conditions above.
 
@@ -368,15 +386,17 @@ When I was testing the game, I found out that when I clicked the `playButton` to
 
 This problem was solved by first declaring a `currentDifficulty` variable. When the different difficulty buttons are clicked, the variable will be updated to either `"easy"`, `"medium"` or `"hard"`. Then I created a `checkGameSpeed()` function to check the difficult level and update `snakeSpeed` accordingly, and called it whenever `startGame()` is executed.
 
-    function checkGameSpeed() {
-      if (currentDifficulty === "easy") {
-        snakeSpeed = 500;
-      } else if (currentDifficulty === "medium") {
-        snakeSpeed = 300;
-      } else if (currentDifficulty === "hard") {
-        snakeSpeed = 100;
-      }
-    }
+```js
+function checkGameSpeed() {
+  if (currentDifficulty === "easy") {
+    snakeSpeed = 500;
+  } else if (currentDifficulty === "medium") {
+    snakeSpeed = 300;
+  } else if (currentDifficulty === "hard") {
+    snakeSpeed = 100;
+  }
+}
+```
 
 ### Arrow Keys Scrolling Page
 
@@ -398,7 +418,7 @@ After some HARD calculations, HARD googling, HARD scratching my head off and HAR
 
 ### The Design
 
-I am very happy with how the design turned out: an old-school, 8-bit vibe webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
+I am very happy with how the design turned out: an old-school, 8-bit vibe (a bit ironically ugly) webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
 
 ![Webpage Example](./assets/readme_images/webpage_example.png)
 
@@ -434,9 +454,7 @@ Gained a deeper understanding of `box-shadow` property in CSS when trying to cre
 
 - If the user press several control keys rapidly within one interval it can cause the snake to hit its own body and end the game.
 
-  > No issues if the keys are pressed within one interval time **_and_** the last key pressed doesn not contradict with the previous direction.
-
-  > > Possible reason: Within one interval window, if several keys are pressed and the last key would make the snake go in the direction of the body, user will not have sufficient time to change direction again before the interval ends, thus making the snake hit its own body causing the game to end.
+  > Possible reason: Within one interval window, if several keys are pressed and the last key would make the snake go in the direction of the body, user will not have sufficient time to change direction again before the interval ends, thus making the snake hit its own body causing the game to end.
 
 ## Future Improvements
 
