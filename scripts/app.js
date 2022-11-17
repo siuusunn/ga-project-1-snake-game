@@ -38,7 +38,6 @@ function initiation() {
   function createGrid() {
     for (let index = 0; index < gridCellCount; index++) {
       const cell = document.createElement("div");
-      // cell.setAttribute("data-index", index);
       cells.push(cell);
       grid.appendChild(cell);
     }
@@ -250,13 +249,14 @@ function initiation() {
   function startGame() {
     removeGameOverText();
     removeSnake();
-    snake = [43, 42, 41, 40];
+    snake = [42, 41, 40];
     clearInterval(timer);
     directionOfTravel = "right";
     currentScore = 0;
     score.innerHTML = currentScore;
     renderSnake();
     playButton.disabled = true;
+    mobilePlayButton.disabled = true;
     spawnApple();
     checkGameSpeed();
     moveSnake();
@@ -278,6 +278,7 @@ function initiation() {
 
   function gameOver() {
     playButton.disabled = false;
+    mobilePlayButton.disabled = false;
     clearInterval(timer);
     displayGameOverText();
     checkHighScore();
