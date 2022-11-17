@@ -285,13 +285,11 @@ The original idea was to use simple shapes to recreate a phone, but I decided to
 
 Using sketch.io, I drew the images for the snake and the apple and exported them in `png` format, to mimick the pixelated elements in the original game.
 
-![Snake Image](./assets/images/Snake-pixel.png)
-
-![Apple Image](./assets/images/apple.png)
+![Snake Image](./assets/images/Snake-pixel.png) ![Apple Image](./assets/images/apple.png)
 
 What these look like on game board:
 
-![Game Board Example](./assets/readme_images/gameboard_example.png)
+![Game Board Example](./assets/readme_images/Game_board_example.gif)
 
 #### 8-bit Styling
 
@@ -323,13 +321,13 @@ button {
 
 Results:
 
-![Buttons Example](./assets/readme_images/buttons_example.png)
+![Easy Button Example](./assets/readme_images/easy-button.gif) ![Medium Button Example](./assets/readme_images/medium-button.gif) ![Hard Button Example](./assets/readme_images/hard-button.gif)
 
 #### Responsive Design
 
 One idea I had from the start was that when the webpage is opened on a mobile device, it should only display the phone and user can control the snake using the number pad on the phone image, like an actual Nokia 8210! So I added four transparent buttons and positioned them on 2, 4, 6, 8 buttons on the phone image. Set everything else's `display` to `none`. Added another button on the phone image to allow user to start & restart the game.
 
-![Responsive Design Example](./assets/readme_images/responsive_example1.png)
+![Responsive Design Example](./assets/readme_images/responsive_design_example.gif)
 
 Each button will call their respective function on click, and update the `directionOfTravel`, working exactly like the arrow keys.
 
@@ -418,9 +416,9 @@ After some HARD calculations, HARD googling, HARD scratching my head off and HAR
 
 ### The Design
 
-I am very happy with how the design turned out: an old-school, 8-bit vibe (a bit ironically ugly) webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
+I am very happy with how the design turned out: an old-school, 8-bit vibe (and ironically ugly) webpage and the game's functions and aesthetic are exactly like the original Snake Game on the Nokia 8210.
 
-![Webpage Example](./assets/readme_images/webpage_example.png)
+![Webpage Example](./assets/readme_images/webpage_example.gif)
 
 The part that I am especially proud of is that the number pad on the phone actually can be used as controls. And that when the webpage is loaded on the screen, it is just the phone with basic number pad controls!
 
