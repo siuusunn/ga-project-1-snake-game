@@ -1,22 +1,16 @@
 # GA PROJECT 01 - ALICE LO
 
-## Project description
+## Project Description
 
-As the first project in the SEI course, we were tasked to build a web game using JavaScript. I chose Snake Game as it was one of my favorite games when I was a kid, and I remember vividly playing this game on my mom's Nokia 8210. This has been a fun project to work on, and to polish and challenge my JavScript skills.
+As the first project in the SEI course, we were tasked to build a web game using JavaScript. I chose Snake Game as it was one of my favorite games when I was a kid, and I remember vividly playing this game on my mom's Nokia 8210. This has been a fun project to work on, and to polish and challenge my JavaScript skills.
 
 I dedicate this project to my mom and her white Nokia 8210 from 1999. :)
 
-## Deploment link
+## Deployment link
 
 https://siuusunn.github.io/ga-project-01/
 
-<!-- ## Getting Started/ Code Installation
-
-Instructions
-
-Explain how the reader accesses your code. Include a step by step approach.
-
-Insert your Getting Started/Code Installation here: -->
+![Game Image](./assets/readme_images/webpage_example.gif)
 
 ## Working Team & Timeframe
 
@@ -58,27 +52,15 @@ Build a snake game with the three key requirements below:
 
 ## Planning
 
-All my planning for this project were either drawn or written out on Excalidraw.
+All the planning for this project were either drawn or written out on Excalidraw.
 
-My first step of planning was to list out all the features that the MVP should have:
+First step was to list out all the features that the MVP should have. And then the important mechanics of the moving elements in the game. If these boxes are not ticked, the game will break.
 
-![MVP Features](./assets/readme_images/MVP_features.png)
+I also drew a very simple wireframe to represent the layout I had in mind (mimicking a phone) which helped me think of what elements to use in the HTML.
 
-And then I listed out the important mechanics of the moving elements in the game. If these boxes are not ticked, the game will break:
+Also wrote down all the functions that I would need for the MVP in pseudo code. And lastly, some bonus features!
 
-![Important mechanics](./assets/readme_images/important_mechanics.png)
-
-I also drew a very simple wireframe to represent the layout I had in mind (mimicking a phone) which helped me think of what elements to use in the HTML:
-
-![Wireframe](./assets/readme_images/Wireframe.png)
-
-And listed all the functions that I would need for the MVP:
-
-![Planning functions list](./assets/readme_images/Planning_functions.png)
-
-Lastly, some bonus features!
-
-![Planning bonus features](./assets/readme_images/bonus_features.png)
+![Planning Example](./assets/readme_images/planning.png)
 
 ## Code Process
 
@@ -94,7 +76,7 @@ I broke down the development into five main pieces and work on them one at a tim
 
 The is the easiest piece in code process. I first created a `div` called `grid` to contain the cells in the HTML. As I wanted to create a 10x10 game board, in JavaScript, I declared a `width` variable with the value of 10, a `gridCellCount` variable with the value of width \* width, and an empty array called `cells`.
 
-Then in the `createGrid()` function, a `for` loop creates 100 `div` each with its own unique `data id`. These are then pushed in the `cells` array and placed inside the `grid`.
+Then in the `createGrid()` function, a `for` loop creates 100 `div`, pushes these in the `cells` array and placed inside the `grid`.
 
 ### The Apple
 
@@ -130,11 +112,11 @@ The snake is the most complicated piece in the development. I broke it down into
 2. Moving the snake
 3. Controlling the snake
 
-First step is to declare `snake` as an array so that it can be extended when it eats an apple (For testing purposes, I put `[42, 41, 40]` in the array). And in the CSS, `background-color` of the class `snake` is set to black.
+First step is to declare `snake` as an array so that it can be extended when it eats an apple (I put `[42, 41, 40]` in the array as a default). And in the CSS, `background-color` of the class `snake` is set to black.
 
 #### Rendering and Removing the Snake
 
-To create the snake (and remove) on the game board, two simple functions using `forEach` method are used. A class of `snake` will be added to the corresponding cell, and vice versa.
+To create and remove the snake on the game board, two simple functions using `forEach` method are used. A class of `snake` will be added to the corresponding cell, and vice versa.
 
 ```js
 function renderSnake() {
@@ -162,7 +144,7 @@ if (event.keyCode === 40 && directionOfTravel !== "up") {
 }
 ```
 
-Time to make the snake move for real! I first wrote four movement functions to make the snake move. Take `moveUp()` function for an example, it first remove the snake from its current position, then it `.pop` the last array element (i.e. the "tail"). Then it `.unshift` an element at the beginning of the array (i.e. the "head") with an value of `(snake[0] - 10)`.
+Time to make the snake move for real! I first wrote four movement functions to make the snake move. Take `moveUp()` function for an example, it first remove the snake from its current position, then it `.pop` the last array element (i.e. the "tail"). Then it `.unshift` the first element of the array (i.e. the "head") with an value of `(snake[0] - 10)`. It also allows the snake to wrap.
 
 ```js
 function moveUp() {
@@ -173,7 +155,7 @@ function moveUp() {
 }
 ```
 
-(Since the board is 10x10, +1 = move right, -1 = move left, +10 = move down, -10 = move up).
+(Since the board is 10x10: +1 = move right, -1 = move left, +10 = move down, -10 = move up)
 
 In the `moveSnake()` function, two variables are decalared:
 
@@ -182,7 +164,7 @@ const x = snake[0] % width;
 const y = Math.floor(snake[0] / width);
 ```
 
-Four `if` statements are in the functions to cover all four directions. The `x` and `y` declared earlier allow me to prevent the snake from going beyond the wall.
+`if` and `else if` statements are used in the function to cover all four directions. The `x` and `y` are used in the second condition to prevent the snake from going beyond the wall.
 
 ```js
 if (directionOfTravel === "right" && x < width - 1) {
@@ -195,14 +177,14 @@ The last step here is to `setInterval` in the `moveSnake()` function to make the
 
 #### Controlling the Snake
 
-The `getDirectionOfTravel()` function earlier then ties in with the `moveSnake()` function and now the snake is controllable!
+The `getDirectionOfTravel()` function then ties in with the `moveSnake()` function and now the snake is controllable!
 
 ### Eating the Apple
 
 The `eatsApple()` function is created to check if the snake has eaten the apple. It has a very simple condition to check if the snake head is in the same cell as the apple (thus eating the apple):
 
 ```js
-    if (cells[snake[0]].classList.contains("apple"))
+if (cells[snake[0]].classList.contains("apple"))
 ```
 
 And then it will excute `spawnApple()` again, make the current score go up, grow the snake with `snake.push()`, clear the interval, render the snake according to the new array, update the `snakeSpeed` and run `moveSnake()` again (so that the snake moves faster everytime it eats an apple!).
@@ -216,7 +198,7 @@ There are only two conditions that will make the game end:
 
 I first created a `gameOver()` function which will clear interval when executed. Then I created a `checkForCollision()` function with `if` statements to check if the above conditions are true.
 
-First is to check if the snake is hitting the wall:
+First is to check if the snake is hitting the wall. The second condition in each statement is to allow user to maneuver when the snake is in front of the wall.
 
 ```js
 if ((snake[0] + width >= width * width && directionOfTravel === "down") ||
@@ -224,8 +206,6 @@ if ((snake[0] + width >= width * width && directionOfTravel === "down") ||
 (snake[0] % width === 0 && directionOfTravel === "left") ||
 (snake[0] - width <= 0 && directionOfTravel === "up"))
 ```
-
-The latter part of each condition above is to allow user to maneuver when the snake is AT the wall.
 
 Second step is to check if the snake is hitting its own body:
 
@@ -236,15 +216,15 @@ if ((directionOfTravel === "right" && cells[snake[0] + 1].classList.contains("sn
 (directionOfTravel === "up" && cells[snake[0] - 10].classList.contains("snake")))
 ```
 
-If any of these conditions return `true`, the function `gameOver()` will run, which will clear the interval and display "GAME OVER" text on the webpage.
+If any of these conditions returns `true`, the function `gameOver()` will run, which will clear the interval and display "GAME OVER" text on the webpage.
 
 All the features that the MVP needs are done at this point, so I moved on to enhacing the game.
 
 ### Enhancements
 
-#### Start button
+#### Start Game Button
 
-I added a `playButton` to start the game. When it's click, it will execute the `startGame()` function:
+I added a `playButton` to start the game. When it's clicked, it will execute the `startGame()` function:
 
 ```js
 function startGame() {
@@ -267,7 +247,7 @@ It will remove the "GAME OVER" text, reset the snake to its default position and
 
 #### Choose Difficulty
 
-Three buttons are created in the HTML to allow user to pick a difficulty level: Noob (easy), Veteran (medium), and Expert (hard). Each has a default speed, Noob being the slowest and Expert the fastes.
+Three buttons are created in the HTML to allow user to pick a difficulty level: Noob (easy), Veteran (medium), and Expert (hard). Each has a default speed, Noob being the slowest and Expert the fastest.
 
 When the button is clicked, the variable `snakeSpeed` will be updated according to the difficulty level. The `<span class="difficulty-text">` will also be updated accordingly to let user know what the current difficulty level is.
 
@@ -275,7 +255,7 @@ When the button is clicked, the variable `snakeSpeed` will be updated according 
 
 #### High Score Table
 
-A `<ol>` titled "HIGH SCORES" with three `<li>` to display the top three high scores. The `checkHighScore()` function is called `gameOver()` function is executed to check if the current score is high enough to be on the high score table.
+A `<ol>` titled "HIGH SCORES" with three `<li>` to display the top three high scores. The `checkHighScore()` function is called when `gameOver()` function is executed to check if the current score is high enough to be on the high score table.
 
 The high scores are stored in an array (default `[0, 0, 0]`). The `checkHighScore()` function checks the `currentScore` against each array item.
 
@@ -283,11 +263,11 @@ The high scores are stored in an array (default `[0, 0, 0]`). The `checkHighScor
 
 #### Game Board
 
-The original idea was to use simple shapes to recreate a phone, but I decided to use an actual image of an old Nokia 8210 as it was my inspiration. The game board `grid` is positioned on the phone screen with transparent border to mimick the original snake game.
+The original idea was to use simple shapes to recreate a phone, but I decided to use an actual image of an old Nokia 8210 as it was my inspiration. The game board `grid` is positioned on the phone screen with transparent border to mimic the original snake game.
 
 #### Snake and Apple
 
-Using sketch.io, I drew the images for the snake and the apple and exported them in `png` format, to mimick the pixelated elements in the original game.
+I used Sketch.io to draw the images for the snake and the apple and exported them in `png` format, to mimic the pixelated elements in the original game.
 
 ![Snake Image](./assets/images/Snake-pixel.png) ![Apple Image](./assets/images/apple.png)
 
@@ -333,7 +313,7 @@ One idea I had from the start was that when the webpage is opened on a mobile de
 
 ![Responsive Design Example](./assets/readme_images/responsive_design_example.gif)
 
-Each button will call their respective function on click, and update the `directionOfTravel`, working exactly like the arrow keys.
+Each button will call their respective functions on click, and update `directionOfTravel`, working exactly like the arrow keys.
 
 ```js
 function numPadControlUp() {
@@ -347,7 +327,7 @@ function numPadControlUp() {
 
 ### Spawning the Apple
 
-To get the apple generated in a random position that is not the snake body is a tricky one for me. I used `if` statements but didn't work. Also I have to taken into consideration that the snake is constantly moving, and it is an array.
+To get the apple generated in a random position that is not the snake body is a tricky one for me. I used `if` statements but didn't work. Also I have to take into consideration that the snake is constantly moving, and it is an array.
 
 So I experimented with `loops`. As I do not know how many times the loop will run until it gets the desired result, I went with a `while` loop and it tackled the problem perfectly.
 
@@ -359,7 +339,7 @@ while (snake.includes(randomPosition)) {
 
 ### Rendering Snake
 
-I was stuck in this part for a long time as I was trying to manipulate the entire `snake` array when the snake moves. After discussion with the instructor, I found a great way to handle this which is only to change the first and the last items in the array according to the `directionOfTravel`.
+I was stuck in this part for a long time as I was trying to manipulate the entire `snake` array to get the snake to wrap when the direction is changed. After discussion with the instructor, I found a great way to handle this which is only to change the first and the last items in the array according to the `directionOfTravel`.
 
 ### Check For Collision
 
@@ -374,13 +354,13 @@ cells[snake[0] - 1].classList.contains("snake") ||
 cells[snake[0] - 10].classList.contains("snake"))
 ```
 
-The logic seemed right but it didn't work. So I experimented and tested around, and finally got it working by adding a condition to check the `directionOfTeavel` to each of the conditions above.
+The logic seemed right but it didn't work. So I experimented and tested around, and finally got it working by adding a second condition to each statement to check the `directionOfTeavel`.
 
 ### Moving the Snake
 
 At the early development stage, I created the `moveSnake()` function to move the snake with `setinterval` and another function to manually control the snake. Doing so caused a major bug where the user is able to move the snake around after `gameOver()` is executed.
 
-After reading the code carefully, I realized the codes in these two functions are 99% same. So I refactored the `moveSnake()` function, deleted the manual movement function, and fiex this issue.
+After reading the code carefully, I realized the codes in these two functions are 99% same. So I refactored the `moveSnake()` function, deleted the manual movement function, and fixed this issue.
 
 ### Set Interval
 
@@ -402,21 +382,21 @@ function checkGameSpeed() {
 
 ### Arrow Keys Scrolling Page
 
-The game is controlled by arrow keys but when the keys are pressed, they will also scroll the page, causing an unpleasant experience when the game is running. After some research I found out that I can prevent this with `.preventDefault()`. So I added a new `preventScrolling()`function to excute this and tie it in with `window.addEventListener("keydown")`
+The game is controlled by arrow keys but when the keys are pressed, they will also scroll the page, causing an unpleasant experience when the game is running. After some research I found out that I can prevent this with `.preventDefault()`. So I added a new `preventScrolling()`function to excute this and tie it in with `window.addEventListener("keydown")`.
 
 ## Wins
 
 ### Breaking Down Codes in Small Functions
 
-I wrote a function for each action and it really helped with the readability (at least for myself!), and made it easier to debug when something went wrong. Also makes my life easier when I wanted to add extra functionalities to the game!
+I wrote a function for each action and it really helped with the readability (at least for myself!), and made it easier to debug when something went wrong. Also made my life easier when I wanted to add extra functionalities to the game!
 
 ### While loops
 
-I am not very confident with `while` loops, I have written many that just would not stop running. But I managed to identify that it needed to be used when spawning a random apple, and wrote one that functions perfectly, and now I understand fully how to work with them.
+I was not very confident with `while` loops, I have written many that just would not stop running. But I managed to identify that it needed to be used when spawning a random apple, and wrote one that functions perfectly, and now I understand fully how to work with them.
 
 ### The `checkForCollision()` Code Block
 
-After some HARD calculations, HARD googling, HARD scratching my head off and HARD experimenting, I got this to work without causing bugs (It was a glorious moment). Now I know that which condition comes first matters **_A LOT_**, and if there are a mountain of conditions, use `if` statements instead of `switch`.
+After some HARD calculations, HARD googling, HARD scratching my head off and HARD experimenting, I got this to work without causing bugs (It was a glorious moment). Now I know that which condition comes first matters **_A LOT_**, and if there is a mountain of conditions, use `if` statements instead of `switch`.
 
 ### The Design
 
@@ -424,7 +404,7 @@ I am very happy with how the design turned out: an old-school, 8-bit vibe (and i
 
 ![Webpage Example](./assets/readme_images/webpage_example.gif)
 
-The part that I am especially proud of is that the number pad on the phone actually can be used as controls. And that when the webpage is loaded on the screen, it is just the phone with basic number pad controls!
+The part that I am especially proud of is that the number pad on the phone actually can be used as controls. And that when the webpage is loaded on mobile devices, it just shows the phone with basic number pad controls!
 
 ## Key Learnings/ Takeaways
 
