@@ -6,7 +6,7 @@ As the first project in the SEI course, we were tasked to build a web game using
 
 I dedicate this project to my mom and her white Nokia 8210 from 1999. :)
 
-## Deployment link
+## Deployment Link
 
 https://siuusunn.github.io/ga-project-01/
 
@@ -396,7 +396,7 @@ I was not very confident with `while` loops, I have written many that just would
 
 ### The `checkForCollision()` Code Block
 
-After some HARD calculations, HARD googling, HARD scratching my head off and HARD experimenting, I got this to work without causing bugs (It was a glorious moment). Now I know that which condition comes first matters **_A LOT_**, and if there is a mountain of conditions, use `if` statements instead of `switch`.
+After some HARD calculations, HARD googling, HARD scratching my head off and HARD experimenting, I got this to work without causing bugs (It was a glorious moment). Now I know that which condition comes first matters **_A LOT_**, and if I need to check a bunch of boolean values, use `if` statements instead of `switch`.
 
 ### The Design
 

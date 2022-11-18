@@ -123,6 +123,8 @@ button {
   cursor: pointer;
 }
 
+/* Difficulty Buttons */
+
 .difficulty-buttons {
   margin-bottom: 20px;
 }
@@ -180,6 +182,8 @@ button {
   box-shadow: inset 4px 4px 0px 0px darkgray;
 }
 
+/* High Scores Table */
+
 .high-score-table {
   display: flex;
   flex-direction: column;
@@ -192,6 +196,8 @@ li {
   padding: 1px;
   margin-top: 15px;
 }
+
+/* Responsive Design */
 
 @media only screen and (max-width: 600px) {
   body {
