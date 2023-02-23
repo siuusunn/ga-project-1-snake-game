@@ -1,4 +1,4 @@
-# GA PROJECT 01 - ALICE LO
+# GA PROJECT 1 - SNAKE GAME
 
 ## Project Description
 
